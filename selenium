@@ -1,0 +1,51 @@
+package SeleniumProgram;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
+
+
+public class formy {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\nagen\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+		ChromeOptions options=new ChromeOptions();
+		options.addArguments("--remote--allow-origin=*","start-maximized");
+		WebDriver driver=new ChromeDriver();
+		driver=new ChromeDriver(options);
+		driver.get("https://formy-project.herokuapp.com/");
+		WebElement Formy=driver.findElement(By.xpath("//a[normalize-space()='Form']"));
+		Formy.click();
+		Thread.sleep(1000);
+		WebElement Fname=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/form[1]/div[1]/div[1]/input[1]"));
+		Fname.sendKeys("Nagendra");
+		Thread.sleep(1000);
+		WebElement lname=driver.findElement(By.cssSelector("#last-name"));
+		lname.sendKeys("Nagothu");
+		Thread.sleep(1000);
+		WebElement Company=driver.findElement(By.xpath("//input[@id='job-title']"));
+		Company.sendKeys("Accenture");
+		Thread.sleep(1000);
+		WebElement Qualification=driver.findElement(By.id("radio-button-2"));
+		Qualification.click();
+		Thread.sleep(1000);
+		WebElement Sex=driver.findElement(By.xpath("(//input[@id='checkbox-1'])[1]"));
+		Sex.click();
+		Thread.sleep(1000);
+		WebElement Years=driver.findElement(By.xpath("//select[@id='select-menu']"));
+		Select years=new Select(Years);
+		years.selectByValue("1");
+		Thread.sleep(2000);
+		years.selectByValue("3");
+		Thread.sleep(2000);
+		years.selectByValue("2");
+		Thread.sleep(2000);
+		years.selectByValue("4");
+		Thread.sleep(2000);
+		years.selectByValue("1");
+		Thread.sleep(2000);
